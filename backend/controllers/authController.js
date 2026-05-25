@@ -27,11 +27,11 @@ const registerUser = async (req, res) => {
       Thank you for registering with us. We're excited to have you on board.
       Your OTP for email verification is: ${otp}`;
 
-      await sendEmail({
-        email: user.email,
-        subject: "Welcome to ShopNest - Email Verification",
+      await sendEmail(
+        user.email,
+        "Welcome to ShopNest - Email Verification",
         message,
-      });
+      );
       res.status(201).json({
         id: user._id,
         name: user.name,
