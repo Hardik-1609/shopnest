@@ -30,7 +30,6 @@ const createProduct = async (req, res) => {
 
     if (image) {
       const result = await cloudinary.uploader.upload(image.path);
-      console.log(result);
       imageUrl = result.secure_url;
     } else {
       return res.status(400).json({ message: "Image is required" });
@@ -50,7 +49,6 @@ const createProduct = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: "Server Error" });
     console.error(error);
-    cls;
   }
 };
 
@@ -68,7 +66,6 @@ const updateProduct = async (req, res) => {
       product.stock = stock || product.stock;
       if (image) {
         const result = await cloudinary.uploader.upload(image.path);
-        console.log(result);
         product.imageUrl = result.secure_url;
       }
       const updatedProduct = await product.save();
