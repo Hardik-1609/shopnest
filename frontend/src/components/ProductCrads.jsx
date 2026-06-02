@@ -1,5 +1,5 @@
-import react, { createContext, useState } from "react";
-import { link } from "react-router-dom";
+import react from "react";
+import { Link } from "react-router-dom";
 
 const ProductCards = ({ product }) => {
   return (
@@ -23,3 +23,5 @@ const ProductCards = ({ product }) => {
     </div>
   );
 };
+
+export default ProductCards;

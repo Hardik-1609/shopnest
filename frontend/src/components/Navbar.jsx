@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext); // Adjust the path as needed
-  const cartItems = useSelector((state) => state.cart.items); // Adjust the path as needed
+  const cartItems = useSelector((state) => state.cart.cartItems); // Adjust the path as needed
   const navigate = useNavigate();
   const handleLogout = () => {
     logout();
