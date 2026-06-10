@@ -21,7 +21,7 @@ const Navbar = () => {
             to="/"
           >
             <img
-              src="./logo.png"
+              src="/logo.png"
               alt="ShopNest Logo"
               className="h-10 rounded shadow-[0_0_20px_#ed5d0e80] w-auto"
             />

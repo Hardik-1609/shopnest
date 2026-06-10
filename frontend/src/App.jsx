@@ -6,6 +6,10 @@ import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import ProductDetails from "./pages/ProductDetails";
+import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
+import OrderSuccess from "./pages/OrderSuccess";
 
 function App() {
   return (
@@ -16,6 +20,10 @@ function App() {
         <Route path="/shop" element={<Shop />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/products/:id" element={<ProductDetails />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/ordersuccess" element={<OrderSuccess />} />
       </Routes>
       <Footer />
     </Router>

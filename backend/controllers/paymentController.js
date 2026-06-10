@@ -5,6 +5,12 @@ dotenv = require("dotenv").config();
 
 const createOrder = async (req, res) => {
   try {
+    if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
+      return res.status(400).json({
+        message: "Razorpay keys are not configured. Please set RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET in backend/.env.",
+      });
+    }
+
     const instance = new razorpay({
       key_id: process.env.RAZORPAY_KEY_ID,
       key_secret: process.env.RAZORPAY_KEY_SECRET,
@@ -15,9 +21,14 @@ const createOrder = async (req, res) => {
       receipt: crypto.randomBytes(10).toString("hex"),
     };
     const order = await instance.orders.create(options);
-    res.status(201).json({ message: "Order created successfully", order });
+    res.status(201).json({
+      message: "Order created successfully",
+      order,
+      key: process.env.RAZORPAY_KEY_ID,
+    });
   } catch (error) {
-    res.status(500).json({ message: "Server Error" });
+    console.error("Payment create error:", error);
+    res.status(500).json({ message: error.message || "Server Error" });
   }
 };
 
