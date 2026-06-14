@@ -7,6 +7,7 @@ function Register() {
         name: "",
         email: "",
         password: "",
+        adminToken: "",
     });
     const { login } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -62,6 +63,13 @@ function Register() {
                         className="w-full bg-secondary text-white p-3 rounded-lg"
                         value={formData.password}
                         onChange={(e) => setFormData({ ...formData, password: e.target.value })} />
+                    <input
+                        type="text"
+                        name="adminToken"
+                        placeholder="Admin Token (Optional)"
+                        className="w-full bg-secondary text-white p-3 rounded-lg"
+                        value={formData.adminToken}
+                        onChange={(e) => setFormData({ ...formData, adminToken: e.target.value })} />
                     <button type="submit" className="bg-primary block mx-auto text-white hover:bg-white hover:text-primary font-medium py-2 px-4 rounded">
                         Register
                     </button>

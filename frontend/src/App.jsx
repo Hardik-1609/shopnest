@@ -10,6 +10,9 @@ import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import OrderSuccess from "./pages/OrderSuccess";
+import Profile from "./pages/Profile";
+import AdminDashboard from "./admin/AdminDashboard";
+import AddProduct from "./admin/AddProduct";
 
 function App() {
   return (
@@ -24,6 +27,9 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/ordersuccess" element={<OrderSuccess />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admin/add-product" element={<AddProduct />} />
       </Routes>
       <Footer />
     </Router>

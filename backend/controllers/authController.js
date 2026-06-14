@@ -9,7 +9,7 @@ const generateToken = (id) => {
 
 // Register User
 const registerUser = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, adminToken } = req.body;
   try {
     const userExists = await User.findOne({ email });
     if (userExists) {
@@ -19,7 +19,10 @@ const registerUser = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    const user = await User.create({ name, email, password: hashedPassword });
+    // Check if admin token is valid
+    const role = adminToken === process.env.ADMIN_TOKEN ? "admin" : "user";
+
+    const user = await User.create({ name, email, password: hashedPassword, role });
     if (user) {
       const otp = Math.floor(100000 + Math.random() * 900000).toString(); // Generate a 6-digit OTP
       const message = `
